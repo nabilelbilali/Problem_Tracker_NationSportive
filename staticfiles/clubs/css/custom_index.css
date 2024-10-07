@@ -1,0 +1,63 @@
+
+/* DASHBOARD */
+.dashboard td, .dashboard th {
+    word-break: break-word;
+}
+
+.dashboard .module table th {
+    width: 100%;
+}
+
+.dashboard .module table td {
+    white-space: nowrap;
+}
+
+.dashboard .module table td a {
+    display: block;
+    padding-right: .6em;
+}
+
+/* RECENT ACTIONS MODULE */
+
+.module ul.actionlist {
+    margin-left: 0;
+}
+
+ul.actionlist li {
+    list-style-type: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+#header {
+    background-color: #FF6500  !important;  /* Orange */
+    color: white !important;  /* Ensure the text is still readable */
+}
+
+
+
+#header a {
+    color: white !important; /* White text for navbar links */
+}
+
+/* Change the action buttons (like 'Log in' and 'Save') to orange */
+.submit-row input {
+    background-color: #FF6500!important;
+    border-color: #FF6500  !important;
+    color: white !important; /* Ensure text stays readable */
+}
+
+/* Change sidebar colors (if using a sidebar layout in the admin) */
+#sidebar {
+    background-color: #FF6500  !important;
+}
+
+#content-main  caption {
+    background-color: #264B5D !important; /* Orange */
+
+}
+
+
+

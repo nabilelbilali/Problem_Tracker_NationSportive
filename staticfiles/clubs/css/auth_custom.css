@@ -1,0 +1,24 @@
+/* Change the background color of the user table rows */
+.result-list tr {
+    background-color: #FFA500;  /* Example: Orange */
+}
+
+/* Change the color of the Add User button */
+.object-tools .addlink {
+    background-color: #FF4500;  /* Example: Darker Orange */
+}
+.app-clubs  caption {
+    background-color: #264B5D !important; /* Orange */
+
+}
+
+
+
+
+
+
+
+
+
+
+

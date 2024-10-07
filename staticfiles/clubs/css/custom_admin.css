@@ -1,0 +1,90 @@
+/* Override the default Django admin blue colors with orange */
+
+
+a:focus,
+a:hover,
+a:active {
+    color: #FF6500 !important;  /* Darker orange on hover */
+}
+
+.module .addlink,
+.module .changelink,
+.module .deletelink,
+.module .historylink {
+    color: #1E3E62 !important;  /* Orange links for add/change/delete */
+}
+
+
+
+button,
+input[type="submit"],
+a.button {
+    background-color: #FF6500 !important;  /* Orange buttons */
+    border-color: #FF6500 !important;
+    color: white !important;
+}
+
+button:hover,
+input[type="submit"]:hover,
+a.button:hover {
+    background-color: #1E3E62!important;  /* Darker orange on hover */
+    border-color: #1E3E62 !important;
+}
+
+
+
+/* Change the admin navbar background color to orange */
+#header {
+    background-color: #FF6500 !important; /* Orange background for the nav bar */
+}
+
+#header .module {
+    background-color: #FF6500 !important; /* Orange background for the module links */
+}
+
+#header a {
+    color: white !important; /* White text for navbar links */
+}
+
+#header a:hover {
+    color: #1E3E62 !important; /* Darker orange for hover state */
+}
+
+
+/* Change the login header background to orange */
+#header {
+    background-color: #FF6500 !important; /* Orange */
+    color: white !important; /* Make sure the text stays visible */
+}
+
+/* Change the color of the login button */
+
+/* Optional: Change form labels color */
+.form-row label {
+    color: #FF6500 !important;
+}
+
+
+
+
+.app-clubs  caption {
+    background-color: #264B5D !important; /* Orange */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
