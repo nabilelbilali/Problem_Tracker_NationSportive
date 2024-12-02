@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Club, Employee, LiaisonOfficer, AttendanceRecord
+from .models import Club, Employee, LiaisonOfficer, AttendanceRecord,  DocumentRequest
 import logging
 from django.contrib.auth.models import Group
 
@@ -184,3 +184,52 @@ class AttendanceRecordAdmin(admin.ModelAdmin):
 
 
 
+
+
+
+
+
+@admin.register(DocumentRequest)
+class DocumentRequestAdmin(admin.ModelAdmin):
+    list_display = ('requested_by', 'employee', 'document_type', 'status', 'request_date')
+    list_filter = ('status', 'request_date','club')
+    search_fields = ('requested_by__username', 'employee__full_name', 'document_type')
+
+    def get_queryset(self, request):
+        """
+        Limit the queryset based on the user's role:
+        - HR Managers see all requests.
+        - Club Managers see only their requests.
+        """
+        qs = super().get_queryset(request)
+        if request.user.groups.filter(name='HR Manager').exists():
+            return qs  # HR Managers can view all requests
+        elif request.user.groups.filter(name='Club Manager').exists():
+            return qs.filter(requested_by=request.user)  # Club Managers see only their requests
+        return qs.none()  # Default: No access
+
+    def has_change_permission(self, request, obj=None):
+        # Allow HR Managers to edit all requests, Club Managers only their own
+        if request.user.groups.filter(name='HR Manager').exists():
+            return True
+        if obj and request.user == obj.requested_by:
+            return True
+        return False
+
+    def save_model(self, request, obj, form, change):
+        # Automatically set the requester to the logged-in user
+        if not change:
+            obj.requested_by = request.user
+        super().save_model(request, obj, form, change)
+
+    def has_add_permission(self, request):
+        # Restrict add permission to the Club Manager group
+        return request.user.groups.filter(name='Club Manager').exists()
+
+    #def has_change_permission(self, request, obj=None):
+        # Restrict change permission to HR managers or admins
+     #   return request.user.is_superuser or request.user.groups.filter(name='HR Manager').exists()
+
+    def has_delete_permission(self, request, obj=None):
+        # Restrict delete permission to superusers
+        return request.user.is_superuser
