@@ -137,7 +137,7 @@ class AttendanceRecordAdmin(admin.ModelAdmin):
                 # Fetch the login Liaison Officer
                 liaison_officer = LiaisonOfficer.objects.get(user=request.user)
                 # Fetch the club employees assigned to this Liaison Officer
-                employees=Employee.objects.get(employee__club=liaison_officer.club)
+                #employees=Employee.objects.get(employee__club=liaison_officer.club)
 
 
                 # Filter attendance records for employees in the same club
